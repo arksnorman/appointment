@@ -1,0 +1,10 @@
+logout:
+    path: /logout/
+
+apiAppointments:
+    path: /api/appointments/
+    controller: App\Controller\ApiController::appointments
+
+apiUsers:
+    path: /api/users/
+    controller: App\Controller\ApiController::users

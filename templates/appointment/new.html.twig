@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Appointment{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h1>Create New Appointment</h1>
+                </div>
+                <div class="card-body">
+                    {{ include('appointment/_form.html.twig') }}
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ path('appointment_index') }}" class="btn btn-primary">Back to appointments list</a>
+                </div>
+            </div>
+
+            <h1></h1>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+{% endblock %}

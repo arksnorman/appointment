@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appointment index{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-center mb-5">
+                <div class="card-body">
+                    <h3>All Appointments</h3>
+                </div>
+            </div>
+            <table class="table table-bordered" id="dataTables-appointment">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Disease</th>
+                    <th>Status</th>
+                    <th>Date Created</th>
+                    <th>Schedule Date</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+            </table>
+
+            <a href="{{ path('appointment_new') }}" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create new</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Well done!</h4>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                <hr>
+                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ allAppointments }} Total Appointment(s)</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ pendingAppointments }} Pending Appointment(s)</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ finishedAppointments }} Finished Appointment(s)</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ activeAppointments }} Active Appointment(s)</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+{% if is_granted('ROLE_STAFF') %}
+    {% if latestAppointments %}
+        <div class="card mt-5">
+            <div class="card-header text-center">
+                Latest appointments
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="row text-center mb-4">
+                        <div class="col-md-4 card-header">Username</div>
+                        <div class="col-md-4 card-header">Appointment status</div>
+                        <div class="col-md-4 card-header">Action</div>
+                    </div>
+                    {% for appointment in latestAppointments %}
+                    <div class="row text-center mb-4">
+                        <div class="col-md-4">{{ appointment.user.username ?? '' }}</div>
+                        <div class="col-md-4">{{ appointment.status }}</div>
+                        <div class="col-md-4">
+                            <a href="{{ path('appointment_show', {'id': appointment.id}) }}" class="btn btn-primary">
+                                <i class="fa fa-eye-slash"></i> View Appointment
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    {% else %}
+        <div class="row text-center mt-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">No latest appointments</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+{% endblock %}

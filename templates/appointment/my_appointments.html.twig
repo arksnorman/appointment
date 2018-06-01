@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}My appointments{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {% if appointments %}
+            {% for appointment in appointments %}
+            <div class="list-group mb-4">
+                <a href="{{ path('appointment_show', {'id': appointment.id}) }}" class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ appointment.disease }}</h5>
+                        <small>{{ appointment.status }}</small>
+                    </div>
+                    <p class="mb-1">{{ appointment.description }}</p>
+                    <small>{{ appointment.getDateCreated|date('Y-m-d H:i:sa') }}</small>
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="card">
+                <div class="card-body">
+                    <h3>You have no appointments</h3>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

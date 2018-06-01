@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users page{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-center mb-5">
+                <div class="card-body">
+                    <h3>All users</h3>
+                </div>
+            </div>
+            <table class="table table-bordered" id="dataTables-user">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>First_name</th>
+                        <th>Last name</th>
+                        <th>Phone number</th>
+                        <th>Role</th>
+                        <th>Last login</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <a href="{{ path('user_new') }}" class="btn btn-primary">Create new</a>
+    </div>
+{% endblock %}
